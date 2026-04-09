@@ -24,7 +24,10 @@ export default function OrderPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-6">
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6 gap-8">
+      <h1 className="text-4xl font-bold tracking-tight text-foreground">
+        Make you order
+      </h1>
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle className="text-2xl">Place an Order</CardTitle>
@@ -35,6 +38,7 @@ export default function OrderPage() {
               <Label htmlFor="userName">User Name</Label>
               <Input
                 id="userName"
+                className="px-4 py-6"
                 placeholder="Enter your name"
                 {...register("userName", { required: "User name is required" })}
               />
@@ -49,6 +53,7 @@ export default function OrderPage() {
               <Label htmlFor="product">Product</Label>
               <Input
                 id="product"
+                className="px-4 py-6"
                 placeholder="Enter product name"
                 {...register("product", { required: "Product is required" })}
               />
@@ -65,6 +70,7 @@ export default function OrderPage() {
                 id="quantity"
                 type="number"
                 min="1"
+                className="px-4 py-6"
                 placeholder="Enter quantity"
                 {...register("quantity", {
                   required: "Quantity is required",
@@ -79,7 +85,7 @@ export default function OrderPage() {
               )}
             </div>
 
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full py-6">
               Add Order
             </Button>
           </form>
