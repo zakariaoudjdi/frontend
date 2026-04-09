@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import { v4 as uuidv4 } from "uuid";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,20 +12,24 @@ export default function OrderPage() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const order = {
-      orderId: uuidv4(),
-      timestamp: new Date().toISOString(),
       ...data,
     };
-    console.log("Order submitted:", order);
+    await fetch("http://localhost:3001/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(order),
+    });
     reset();
   };
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6 gap-8">
       <h1 className="text-4xl font-bold tracking-tight text-foreground">
-        Make you order
+        Make your order
       </h1>
       <Card className="w-full max-w-md">
         <CardHeader>
