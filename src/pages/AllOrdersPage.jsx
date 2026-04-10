@@ -9,7 +9,7 @@ export default function AllOrdersPage() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await fetch("http://localhost:3001/orders");
+        const res = await fetch("http://localhost:3000/orders");
         if (!res.ok) throw new Error("Failed to fetch orders");
         const data = await res.json();
         console.log(data);
